@@ -17,3 +17,32 @@ save those metrics in redis DB
 
 do all configurations through ansible -as much as possible-
 
+<h2>Instructions:</h2>
+Like last time,
+On master node you need to create an ssh key and populate it because Ansible do coordinate all other nodes through ssh
+
+```
+ssh-keygen
+ssh-copy-id [server ip's]
+```
+
+Install ansible on your master node:
+
+```
+yum install epel-release
+sudo yum update
+sudo yum install ansible
+```
+
+Change DNS on master node to shecan DNS by editing /etc/resolve.conf and adding below line on top of it
+
+```
+nameserver 178.22.122.100
+```
+
+Download needed modules for ansible to be able to run the playbook & finally run your playbook:
+
+```
+ansible-galaxy collection install community.general
+ansible-playbool playbook.yml
+```

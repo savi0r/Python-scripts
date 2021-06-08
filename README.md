@@ -18,6 +18,12 @@ save those metrics in redis DB
 do all configurations through ansible -as much as possible-
 
 <h2>Instructions:</h2>
+The playbook file in ansible directory is created so that it builds docker images in every other folder,stage 1 is the log analyzer which utilize `re` library to search for the defined patterns and `shutil` to extract system metrics
+
+In stage 2 we utilize `redis` library to connect to the redis DB and we used sorted sets which are associated with score, that is used in order to take the sorted set ordered, from the smallest to the greatest score. While members are unique, scores may be repeated. With sorted sets you can add, remove, or update elements in a very fast way. And sorted sets here are given a timestamp a label-which is cpu , memory or disk- and the value. These values are stored for 30min and then they will be deleted to free memory space. And finally draw graphs using `plotly`
+
+And finally in stage 3 reside the Nginx image file.
+
 Like last time,
 On master node you need to create an ssh key and populate it because Ansible do coordinate all other nodes through ssh
 
@@ -46,3 +52,9 @@ Download needed modules for ansible to be able to run the playbook & finally run
 ansible-galaxy collection install community.general
 ansible-playbool playbook.yml
 ```
+
+the final project will look like below:
+
+![project](img/final.png)
+
+

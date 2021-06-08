@@ -9,10 +9,10 @@ As a rule of thumb it is suggested that whenever your bashcript is getting longe
 
 
 Implement the HAProxy log analyzer which you've written in bash and see the difference 
-print the output logs to a file which is accessible by /log through Nginx
+print the output logs to a file which is accessible by `/log` through Nginx
 
 Through python grab system metrics such as - CPU , RAM & Disk usage-
-make a graph out of those metrics using plotly library which is accessible by /charts through Nginx
+make a graph out of those metrics using plotly library which is accessible by `/charts` through Nginx
 save those metrics in redis DB
 
 do all configurations through ansible -as much as possible-

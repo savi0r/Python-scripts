@@ -1,0 +1,8 @@
+[master]
+localhost ansible_connection=local
+[loadbalancer]
+loadbalancer ansible_host=192.168.10.10 
+[servers]
+redis ansible_host=192.168.10.19
+logparser ansible_host=192.168.10.3
+metric ansible_host=192.168.10.24
